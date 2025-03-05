@@ -11,17 +11,9 @@ def main():
         transactions = generate_transactions(3)
         my_blockchain.add_block(transactions)
 
-    # my_blockchain.balances["Alice"] = 100
-    # my_blockchain.balances["Bob"] = 50
-
-    # transactions = [
-    # {"from": "Alice", "to": "Bob", "amount": 10},
-    # {"from": "Bob", "to": "Alice", "amount": 5}
-    # ]
-
-    # my_blockchain.add_block("Miner1", transactions)
     my_blockchain.display_blockchain()
-    print("Balances:", my_blockchain.balances)
+    
+    print("Is blockchain valid?", my_blockchain.is_chain_valid())
 
 
 def generate_transactions(n: int = 3) -> list:

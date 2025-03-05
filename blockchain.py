@@ -3,11 +3,9 @@ from block import Block
 
 
 class Blockchain:
-    def __init__(self, difficulty: int = 4, reward: int = 50) -> list[Block]:
+    def __init__(self, difficulty: int = 4) -> list[Block]:
         self.chain: list[Block] = []
         self.difficulty = difficulty
-        self.reward = reward
-        self.balances = {}
         self.create_genesis_block()
         print("Difficulty:", self.difficulty)
 
@@ -22,8 +20,6 @@ class Blockchain:
 
     def add_block(self, data: str) -> bool:
         prev_block = self.get_latest_block()
-        # reward_transaction = f"{miner_address} was rewarded with {self.reward} coins"
-        # data.append(reward_transaction)
         new_block = Block(
             len(self.chain),
             time.time(),
@@ -33,7 +29,6 @@ class Blockchain:
         )
         self.mine_block(new_block)
         self.chain.append(new_block)
-        # self.update_balances(data)
         return True
 
     def mine_block(self, block: Block) -> None:
@@ -46,14 +41,6 @@ class Blockchain:
         for block in self.chain:
             print(block)
             print("-" * 50)
-
-    # def update_balances(self, transactions: list) -> None:
-    #     for tx in transactions:
-    #         if tx["from"] != "network":
-    #             self.balances[tx["from"]] = (
-    #                 self.balances.get(tx["from"], 0) - tx["amount"]
-    #             )
-    #         self.balances[tx["to"]] = self.balances.get(tx["to"], 0) + tx["amount"]
 
     def is_chain_valid(self) -> bool:
         for i in range(1, len(self.chain)):
@@ -69,3 +56,5 @@ class Blockchain:
                 return False
 
         return True
+    
+    

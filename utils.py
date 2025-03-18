@@ -77,3 +77,7 @@ def get_transaction() -> Transaction:
     amount = get_random_amount()
     message = f"{sender} paid {amount} to {receiver}"
     return Transaction(sender, receiver, amount, message)
+
+
+def get_random_string(length: int) -> str:
+    return "".join(random.choices("abcdefghijklmnopqrstuvwxyz", k=length))

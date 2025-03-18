@@ -7,7 +7,6 @@ class Blockchain:
         self.chain: list[Block] = []
         self.difficulty = difficulty
         self.create_genesis_block()
-        print("Difficulty:", self.difficulty)
 
     def create_genesis_block(self) -> None:
         genesis_block = Block(
